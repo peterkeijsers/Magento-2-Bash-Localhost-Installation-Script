@@ -13,25 +13,6 @@ Clone this repository inside your home directory and name it:
 
 Make a copy of the config.sample.sh file, rename it to config.sh and update according to your localmachine.
 
-### Different PHP Versions Support
-
-Magento 2.1 requires php7.0 but Magento 2.3 requires php7.1. To run both environments you have to create a switch in your NGINX but also in the installation.
-
-Set the PHP7 and COMPOSER_PHP7 variables in the config.sh.
-
-Additional information:
-
- - Install Different PHP Versions see for Example for Ubuntu:
-        https://www.tecmint.com/install-different-php-versions-in-ubuntu/
- - Alternative switch PHP version for Linux users:
- 	- after installing different versions of php-fpm use the following command to switch php-version:
- 		```phpswitch 7.0```
- - Make a manual switch in NGINX
-    - Set the fastcgi_pass for Magento 2.1
-      - fastcgi_pass   unix:/var/run/php/php7.0-fpm.sock;
-    - Set the fastcgi_pass for Magento 2.3
-      - fastcgi_pass   unix:/var/run/php/php7.1-fpm.sock;
- - **IMPORTANT: Magento 2.2 can fun on both php versions**
 
 ### Use the simplified aliases
 Include .bash_xp in .bashrc or .bash_aliases, include example:
@@ -42,6 +23,27 @@ if [ -f ~/tools/Magento-2-Bash-Localhost-Installation-Script/.bash_xp ]; then
 fi
 ```
 
+### Different PHP Versions Support
+
+Magento 2.1 requires php7.0 but Magento 2.3 requires php7.1. To run both environments you have to create a switch in your NGINX but also in the installation.
+
+**For Linux users** 
+the new 'phpswitch' command also installs any missing php version you like to switch to. It also downloads all the php-extensions needed for Magento 2 for the sepcified php version.**
+Use this command for example to switch to php7.0-fpm and install it when needed
+```phpswitch 7.0```
+
+**For Mac Users**
+Additional information:
+ - Make a manual switch in NGINX
+    - Set the fastcgi_pass for Magento 2.1
+      - fastcgi_pass   unix:/var/run/php/php7.0-fpm.sock;
+    - Set the fastcgi_pass for Magento 2.3
+      - fastcgi_pass   unix:/var/run/php/php7.1-fpm.sock;
+ - **IMPORTANT: Magento 2.2 can run on both php versions**
+
+**All users**
+
+Set the PHP7 and COMPOSER_PHP7 variables in the config.sh
 
 ## Main Functionalities
 
